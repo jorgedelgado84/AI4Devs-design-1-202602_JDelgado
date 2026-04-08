@@ -1,0 +1,420 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.er-svg-wrap { width: 100%; overflow-x: auto; }
+.entity-tbl { font-size: 11px; font-family: var(--font-sans); }
+</style>
+
+<div class="er-svg-wrap">
+<svg width="100%" viewBox="0 0 1100 1020" role="img" style="min-width:900px">
+  <title>Diagrama ER LTI-ATS con cardinalidad crow's foot</title>
+  <desc>Entidades del sistema LTI-ATS con atributos, tipos de dato y líneas de relación con notación crow's foot.</desc>
+  <defs>
+    <marker id="many" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M2 2 L10 6 L2 10" fill="none" stroke="context-stroke" stroke-width="1.2"/>
+      <line x1="2" y1="2" x2="2" y2="10" stroke="context-stroke" stroke-width="1.2"/>
+    </marker>
+    <marker id="one" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <line x1="8" y1="2" x2="8" y2="10" stroke="context-stroke" stroke-width="1.2"/>
+      <line x1="10" y1="2" x2="10" y2="10" stroke="context-stroke" stroke-width="1.2"/>
+    </marker>
+    <marker id="one-start" viewBox="0 0 12 12" refX="2" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <line x1="2" y1="2" x2="2" y2="10" stroke="context-stroke" stroke-width="1.2"/>
+      <line x1="4" y1="2" x2="4" y2="10" stroke="context-stroke" stroke-width="1.2"/>
+    </marker>
+    <marker id="many-start" viewBox="0 0 12 12" refX="2" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M10 2 L2 6 L10 10" fill="none" stroke="context-stroke" stroke-width="1.2"/>
+      <line x1="10" y1="2" x2="10" y2="10" stroke="context-stroke" stroke-width="1.2"/>
+    </marker>
+  </defs>
+
+  <!-- ═══════════════════════════════════
+       ENTIDADES
+  ═══════════════════════════════════ -->
+
+  <!-- USUARIO x=30 y=20 w=180 h=152 -->
+  <rect x="30" y="20" width="180" height="152" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+  <rect x="30" y="20" width="180" height="26" rx="6" fill="#534AB7"/>
+  <rect x="30" y="38" width="180" height="8" fill="#534AB7"/>
+  <text x="120" y="37" text-anchor="middle" font-size="12" font-weight="600" fill="#fff" font-family="var(--font-sans)">Usuario</text>
+  <line x1="30" y1="46" x2="210" y2="46" stroke="#AFA9EC" stroke-width="0.5"/>
+  <text x="40" y="60" font-size="10" fill="#3C3489" font-family="var(--font-sans)" font-weight="600">id</text><text x="130" y="60" font-size="10" fill="#534AB7" font-family="var(--font-sans)">UUID PK</text>
+  <line x1="30" y1="65" x2="210" y2="65" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="40" y="78" font-size="10" fill="#26215C" font-family="var(--font-sans)">nombre</text><text x="130" y="78" font-size="10" fill="#534AB7" font-family="var(--font-sans)">VARCHAR</text>
+  <line x1="30" y1="83" x2="210" y2="83" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="40" y="96" font-size="10" fill="#26215C" font-family="var(--font-sans)">email</text><text x="130" y="96" font-size="10" fill="#534AB7" font-family="var(--font-sans)">VARCHAR</text>
+  <line x1="30" y1="101" x2="210" y2="101" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="40" y="114" font-size="10" fill="#26215C" font-family="var(--font-sans)">tipo</text><text x="130" y="114" font-size="10" fill="#534AB7" font-family="var(--font-sans)">ENUM</text>
+  <line x1="30" y1="119" x2="210" y2="119" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="40" y="132" font-size="10" fill="#26215C" font-family="var(--font-sans)">activo</text><text x="130" y="132" font-size="10" fill="#534AB7" font-family="var(--font-sans)">BOOLEAN</text>
+  <line x1="30" y1="137" x2="210" y2="137" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="40" y="150" font-size="10" fill="#26215C" font-family="var(--font-sans)">created_by</text><text x="130" y="150" font-size="10" fill="#993556" font-family="var(--font-sans)">FK self</text>
+  <line x1="30" y1="155" x2="210" y2="155" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="40" y="165" font-size="10" fill="#26215C" font-family="var(--font-sans)">updated_by</text><text x="130" y="165" font-size="10" fill="#993556" font-family="var(--font-sans)">FK self</text>
+
+  <!-- ROL x=260 y=20 w=170 h=134 -->
+  <rect x="260" y="20" width="170" height="134" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+  <rect x="260" y="20" width="170" height="26" rx="6" fill="#534AB7"/>
+  <rect x="260" y="38" width="170" height="8" fill="#534AB7"/>
+  <text x="345" y="37" text-anchor="middle" font-size="12" font-weight="600" fill="#fff" font-family="var(--font-sans)">Rol</text>
+  <line x1="260" y1="46" x2="430" y2="46" stroke="#AFA9EC" stroke-width="0.5"/>
+  <text x="270" y="60" font-size="10" fill="#3C3489" font-family="var(--font-sans)" font-weight="600">id</text><text x="360" y="60" font-size="10" fill="#534AB7" font-family="var(--font-sans)">UUID PK</text>
+  <line x1="260" y1="65" x2="430" y2="65" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="270" y="78" font-size="10" fill="#26215C" font-family="var(--font-sans)">nombre</text><text x="360" y="78" font-size="10" fill="#534AB7" font-family="var(--font-sans)">VARCHAR</text>
+  <line x1="260" y1="83" x2="430" y2="83" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="270" y="96" font-size="10" fill="#26215C" font-family="var(--font-sans)">tipo_usuario</text><text x="360" y="96" font-size="10" fill="#534AB7" font-family="var(--font-sans)">ENUM</text>
+  <line x1="260" y1="101" x2="430" y2="101" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="270" y="114" font-size="10" fill="#26215C" font-family="var(--font-sans)">activo</text><text x="360" y="114" font-size="10" fill="#534AB7" font-family="var(--font-sans)">BOOLEAN</text>
+  <line x1="260" y1="119" x2="430" y2="119" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="270" y="132" font-size="10" fill="#26215C" font-family="var(--font-sans)">created_by</text><text x="360" y="132" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+  <line x1="260" y1="137" x2="430" y2="137" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="270" y="148" font-size="10" fill="#26215C" font-family="var(--font-sans)">updated_by</text><text x="360" y="148" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+
+  <!-- PERMISO x=480 y=20 w=170 h=134 -->
+  <rect x="480" y="20" width="170" height="134" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+  <rect x="480" y="20" width="170" height="26" rx="6" fill="#534AB7"/>
+  <rect x="480" y="38" width="170" height="8" fill="#534AB7"/>
+  <text x="565" y="37" text-anchor="middle" font-size="12" font-weight="600" fill="#fff" font-family="var(--font-sans)">Permiso</text>
+  <line x1="480" y1="46" x2="650" y2="46" stroke="#AFA9EC" stroke-width="0.5"/>
+  <text x="490" y="60" font-size="10" fill="#3C3489" font-family="var(--font-sans)" font-weight="600">id</text><text x="580" y="60" font-size="10" fill="#534AB7" font-family="var(--font-sans)">UUID PK</text>
+  <line x1="480" y1="65" x2="650" y2="65" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="490" y="78" font-size="10" fill="#26215C" font-family="var(--font-sans)">codigo</text><text x="580" y="78" font-size="10" fill="#534AB7" font-family="var(--font-sans)">VARCHAR</text>
+  <line x1="480" y1="83" x2="650" y2="83" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="490" y="96" font-size="10" fill="#26215C" font-family="var(--font-sans)">modulo</text><text x="580" y="96" font-size="10" fill="#534AB7" font-family="var(--font-sans)">ENUM</text>
+  <line x1="480" y1="101" x2="650" y2="101" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="490" y="114" font-size="10" fill="#26215C" font-family="var(--font-sans)">accion</text><text x="580" y="114" font-size="10" fill="#534AB7" font-family="var(--font-sans)">ENUM</text>
+  <line x1="480" y1="119" x2="650" y2="119" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="490" y="132" font-size="10" fill="#26215C" font-family="var(--font-sans)">created_by</text><text x="580" y="132" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+  <line x1="480" y1="137" x2="650" y2="137" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="490" y="148" font-size="10" fill="#26215C" font-family="var(--font-sans)">updated_by</text><text x="580" y="148" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+
+  <!-- ROL_PERMISO x=700 y=20 w=170 h=116 -->
+  <rect x="700" y="20" width="170" height="116" rx="6" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+  <rect x="700" y="20" width="170" height="26" rx="6" fill="#5F5E5A"/>
+  <rect x="700" y="38" width="170" height="8" fill="#5F5E5A"/>
+  <text x="785" y="37" text-anchor="middle" font-size="12" font-weight="600" fill="#fff" font-family="var(--font-sans)">Rol_Permiso</text>
+  <line x1="700" y1="46" x2="870" y2="46" stroke="#B4B2A9" stroke-width="0.5"/>
+  <text x="710" y="60" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)" font-weight="600">id</text><text x="800" y="60" font-size="10" fill="#5F5E5A" font-family="var(--font-sans)">UUID PK</text>
+  <line x1="700" y1="65" x2="870" y2="65" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="710" y="78" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">rol_id</text><text x="800" y="78" font-size="10" fill="#993556" font-family="var(--font-sans)">FK → Rol</text>
+  <line x1="700" y1="83" x2="870" y2="83" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="710" y="96" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">permiso_id</text><text x="800" y="96" font-size="10" fill="#993556" font-family="var(--font-sans)">FK → Permiso</text>
+  <line x1="700" y1="101" x2="870" y2="101" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="710" y="114" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">created_by</text><text x="800" y="114" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+  <line x1="700" y1="119" x2="870" y2="119" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="710" y="130" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">updated_by</text><text x="800" y="130" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+
+  <!-- USUARIO_ROL x=900 y=20 w=175 h=116 -->
+  <rect x="900" y="20" width="175" height="116" rx="6" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+  <rect x="900" y="20" width="175" height="26" rx="6" fill="#5F5E5A"/>
+  <rect x="900" y="38" width="175" height="8" fill="#5F5E5A"/>
+  <text x="987" y="37" text-anchor="middle" font-size="12" font-weight="600" fill="#fff" font-family="var(--font-sans)">Usuario_Rol</text>
+  <line x1="900" y1="46" x2="1075" y2="46" stroke="#B4B2A9" stroke-width="0.5"/>
+  <text x="910" y="60" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)" font-weight="600">id</text><text x="1000" y="60" font-size="10" fill="#5F5E5A" font-family="var(--font-sans)">UUID PK</text>
+  <line x1="900" y1="65" x2="1075" y2="65" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="910" y="78" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">usuario_id</text><text x="1000" y="78" font-size="10" fill="#993556" font-family="var(--font-sans)">FK → Usuario</text>
+  <line x1="900" y1="83" x2="1075" y2="83" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="910" y="96" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">rol_id</text><text x="1000" y="96" font-size="10" fill="#993556" font-family="var(--font-sans)">FK → Rol</text>
+  <line x1="900" y1="101" x2="1075" y2="101" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="910" y="114" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">empresa_id</text><text x="1000" y="114" font-size="10" fill="#993556" font-family="var(--font-sans)">FK → Empresa</text>
+  <line x1="900" y1="119" x2="1075" y2="119" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="910" y="130" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">created_by</text><text x="1000" y="130" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+
+  <!-- EMPRESA x=30 y=230 w=180 h=152 -->
+  <rect x="30" y="230" width="180" height="152" rx="6" fill="#E6F1FB" stroke="#185FA5" stroke-width="1"/>
+  <rect x="30" y="230" width="180" height="26" rx="6" fill="#185FA5"/>
+  <rect x="30" y="248" width="180" height="8" fill="#185FA5"/>
+  <text x="120" y="247" text-anchor="middle" font-size="12" font-weight="600" fill="#fff" font-family="var(--font-sans)">Empresa</text>
+  <line x1="30" y1="256" x2="210" y2="256" stroke="#85B7EB" stroke-width="0.5"/>
+  <text x="40" y="270" font-size="10" fill="#042C53" font-family="var(--font-sans)" font-weight="600">id</text><text x="130" y="270" font-size="10" fill="#185FA5" font-family="var(--font-sans)">UUID PK</text>
+  <line x1="30" y1="275" x2="210" y2="275" stroke="#85B7EB" stroke-width="0.3"/>
+  <text x="40" y="288" font-size="10" fill="#042C53" font-family="var(--font-sans)">nombre</text><text x="130" y="288" font-size="10" fill="#185FA5" font-family="var(--font-sans)">VARCHAR</text>
+  <line x1="30" y1="293" x2="210" y2="293" stroke="#85B7EB" stroke-width="0.3"/>
+  <text x="40" y="306" font-size="10" fill="#042C53" font-family="var(--font-sans)">industry</text><text x="130" y="306" font-size="10" fill="#185FA5" font-family="var(--font-sans)">VARCHAR</text>
+  <line x1="30" y1="311" x2="210" y2="311" stroke="#85B7EB" stroke-width="0.3"/>
+  <text x="40" y="324" font-size="10" fill="#042C53" font-family="var(--font-sans)">tamaño</text><text x="130" y="324" font-size="10" fill="#185FA5" font-family="var(--font-sans)">ENUM</text>
+  <line x1="30" y1="329" x2="210" y2="329" stroke="#85B7EB" stroke-width="0.3"/>
+  <text x="40" y="342" font-size="10" fill="#042C53" font-family="var(--font-sans)">pais</text><text x="130" y="342" font-size="10" fill="#185FA5" font-family="var(--font-sans)">VARCHAR</text>
+  <line x1="30" y1="347" x2="210" y2="347" stroke="#85B7EB" stroke-width="0.3"/>
+  <text x="40" y="360" font-size="10" fill="#042C53" font-family="var(--font-sans)">created_by</text><text x="130" y="360" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+  <line x1="30" y1="365" x2="210" y2="365" stroke="#85B7EB" stroke-width="0.3"/>
+  <text x="40" y="376" font-size="10" fill="#042C53" font-family="var(--font-sans)">updated_by</text><text x="130" y="376" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+
+  <!-- CANDIDATO x=870 y=230 w=185 h=152 -->
+  <rect x="870" y="230" width="185" height="152" rx="6" fill="#E6F1FB" stroke="#185FA5" stroke-width="1"/>
+  <rect x="870" y="230" width="185" height="26" rx="6" fill="#185FA5"/>
+  <rect x="870" y="248" width="185" height="8" fill="#185FA5"/>
+  <text x="962" y="247" text-anchor="middle" font-size="12" font-weight="600" fill="#fff" font-family="var(--font-sans)">Candidato</text>
+  <line x1="870" y1="256" x2="1055" y2="256" stroke="#85B7EB" stroke-width="0.5"/>
+  <text x="880" y="270" font-size="10" fill="#042C53" font-family="var(--font-sans)" font-weight="600">id</text><text x="970" y="270" font-size="10" fill="#185FA5" font-family="var(--font-sans)">UUID PK</text>
+  <line x1="870" y1="275" x2="1055" y2="275" stroke="#85B7EB" stroke-width="0.3"/>
+  <text x="880" y="288" font-size="10" fill="#042C53" font-family="var(--font-sans)">usuario_id</text><text x="970" y="288" font-size="10" fill="#993556" font-family="var(--font-sans)">FK → Usuario</text>
+  <line x1="870" y1="293" x2="1055" y2="293" stroke="#85B7EB" stroke-width="0.3"/>
+  <text x="880" y="306" font-size="10" fill="#042C53" font-family="var(--font-sans)">nombre</text><text x="970" y="306" font-size="10" fill="#185FA5" font-family="var(--font-sans)">VARCHAR</text>
+  <line x1="870" y1="311" x2="1055" y2="311" stroke="#85B7EB" stroke-width="0.3"/>
+  <text x="880" y="324" font-size="10" fill="#042C53" font-family="var(--font-sans)">email</text><text x="970" y="324" font-size="10" fill="#185FA5" font-family="var(--font-sans)">VARCHAR</text>
+  <line x1="870" y1="329" x2="1055" y2="329" stroke="#85B7EB" stroke-width="0.3"/>
+  <text x="880" y="342" font-size="10" fill="#042C53" font-family="var(--font-sans)">cv_url</text><text x="970" y="342" font-size="10" fill="#185FA5" font-family="var(--font-sans)">VARCHAR</text>
+  <line x1="870" y1="347" x2="1055" y2="347" stroke="#85B7EB" stroke-width="0.3"/>
+  <text x="880" y="360" font-size="10" fill="#042C53" font-family="var(--font-sans)">created_by</text><text x="970" y="360" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+  <line x1="870" y1="365" x2="1055" y2="365" stroke="#85B7EB" stroke-width="0.3"/>
+  <text x="880" y="376" font-size="10" fill="#042C53" font-family="var(--font-sans)">updated_by</text><text x="970" y="376" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+
+  <!-- VACANTE x=270 y=230 w=180 h=170 -->
+  <rect x="270" y="230" width="180" height="170" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+  <rect x="270" y="230" width="180" height="26" rx="6" fill="#0F6E56"/>
+  <rect x="270" y="248" width="180" height="8" fill="#0F6E56"/>
+  <text x="360" y="247" text-anchor="middle" font-size="12" font-weight="600" fill="#fff" font-family="var(--font-sans)">Vacante</text>
+  <line x1="270" y1="256" x2="450" y2="256" stroke="#5DCAA5" stroke-width="0.5"/>
+  <text x="280" y="270" font-size="10" fill="#04342C" font-family="var(--font-sans)" font-weight="600">id</text><text x="370" y="270" font-size="10" fill="#0F6E56" font-family="var(--font-sans)">UUID PK</text>
+  <line x1="270" y1="275" x2="450" y2="275" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="280" y="288" font-size="10" fill="#04342C" font-family="var(--font-sans)">empresa_id</text><text x="370" y="288" font-size="10" fill="#993556" font-family="var(--font-sans)">FK → Empresa</text>
+  <line x1="270" y1="293" x2="450" y2="293" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="280" y="306" font-size="10" fill="#04342C" font-family="var(--font-sans)">titulo</text><text x="370" y="306" font-size="10" fill="#0F6E56" font-family="var(--font-sans)">VARCHAR</text>
+  <line x1="270" y1="311" x2="450" y2="311" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="280" y="324" font-size="10" fill="#04342C" font-family="var(--font-sans)">modalidad</text><text x="370" y="324" font-size="10" fill="#0F6E56" font-family="var(--font-sans)">ENUM</text>
+  <line x1="270" y1="329" x2="450" y2="329" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="280" y="342" font-size="10" fill="#04342C" font-family="var(--font-sans)">estado</text><text x="370" y="342" font-size="10" fill="#0F6E56" font-family="var(--font-sans)">ENUM</text>
+  <line x1="270" y1="347" x2="450" y2="347" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="280" y="360" font-size="10" fill="#04342C" font-family="var(--font-sans)">salario_min</text><text x="370" y="360" font-size="10" fill="#0F6E56" font-family="var(--font-sans)">DECIMAL</text>
+  <line x1="270" y1="365" x2="450" y2="365" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="280" y="378" font-size="10" fill="#04342C" font-family="var(--font-sans)">created_by</text><text x="370" y="378" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+  <line x1="270" y1="383" x2="450" y2="383" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="280" y="394" font-size="10" fill="#04342C" font-family="var(--font-sans)">updated_by</text><text x="370" y="394" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+
+  <!-- CANAL_PUBLICACION x=30 y=440 w=180 h=134 -->
+  <rect x="30" y="450" width="180" height="134" rx="6" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+  <rect x="30" y="450" width="180" height="26" rx="6" fill="#5F5E5A"/>
+  <rect x="30" y="468" width="180" height="8" fill="#5F5E5A"/>
+  <text x="120" y="467" text-anchor="middle" font-size="12" font-weight="600" fill="#fff" font-family="var(--font-sans)">Canal_Publicacion</text>
+  <line x1="30" y1="476" x2="210" y2="476" stroke="#B4B2A9" stroke-width="0.5"/>
+  <text x="40" y="490" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)" font-weight="600">id</text><text x="130" y="490" font-size="10" fill="#5F5E5A" font-family="var(--font-sans)">UUID PK</text>
+  <line x1="30" y1="495" x2="210" y2="495" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="40" y="508" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">vacante_id</text><text x="130" y="508" font-size="10" fill="#993556" font-family="var(--font-sans)">FK → Vacante</text>
+  <line x1="30" y1="513" x2="210" y2="513" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="40" y="526" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">canal</text><text x="130" y="526" font-size="10" fill="#5F5E5A" font-family="var(--font-sans)">ENUM</text>
+  <line x1="30" y1="531" x2="210" y2="531" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="40" y="544" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">url_publicacion</text><text x="130" y="544" font-size="10" fill="#5F5E5A" font-family="var(--font-sans)">VARCHAR</text>
+  <line x1="30" y1="549" x2="210" y2="549" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="40" y="562" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">activo</text><text x="130" y="562" font-size="10" fill="#5F5E5A" font-family="var(--font-sans)">BOOLEAN</text>
+  <line x1="30" y1="567" x2="210" y2="567" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="40" y="576" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">created_by</text><text x="130" y="576" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+
+  <!-- ETAPA x=500 y=230 w=170 h=152 -->
+  <rect x="500" y="230" width="170" height="152" rx="6" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+  <rect x="500" y="230" width="170" height="26" rx="6" fill="#854F0B"/>
+  <rect x="500" y="248" width="170" height="8" fill="#854F0B"/>
+  <text x="585" y="247" text-anchor="middle" font-size="12" font-weight="600" fill="#fff" font-family="var(--font-sans)">Etapa</text>
+  <line x1="500" y1="256" x2="670" y2="256" stroke="#EF9F27" stroke-width="0.5"/>
+  <text x="510" y="270" font-size="10" fill="#412402" font-family="var(--font-sans)" font-weight="600">id</text><text x="600" y="270" font-size="10" fill="#854F0B" font-family="var(--font-sans)">UUID PK</text>
+  <line x1="500" y1="275" x2="670" y2="275" stroke="#EF9F27" stroke-width="0.3"/>
+  <text x="510" y="288" font-size="10" fill="#412402" font-family="var(--font-sans)">vacante_id</text><text x="600" y="288" font-size="10" fill="#993556" font-family="var(--font-sans)">FK → Vacante</text>
+  <line x1="500" y1="293" x2="670" y2="293" stroke="#EF9F27" stroke-width="0.3"/>
+  <text x="510" y="306" font-size="10" fill="#412402" font-family="var(--font-sans)">nombre</text><text x="600" y="306" font-size="10" fill="#854F0B" font-family="var(--font-sans)">VARCHAR</text>
+  <line x1="500" y1="311" x2="670" y2="311" stroke="#EF9F27" stroke-width="0.3"/>
+  <text x="510" y="324" font-size="10" fill="#412402" font-family="var(--font-sans)">orden</text><text x="600" y="324" font-size="10" fill="#854F0B" font-family="var(--font-sans)">INTEGER</text>
+  <line x1="500" y1="329" x2="670" y2="329" stroke="#EF9F27" stroke-width="0.3"/>
+  <text x="510" y="342" font-size="10" fill="#412402" font-family="var(--font-sans)">tipo</text><text x="600" y="342" font-size="10" fill="#854F0B" font-family="var(--font-sans)">ENUM</text>
+  <line x1="500" y1="347" x2="670" y2="347" stroke="#EF9F27" stroke-width="0.3"/>
+  <text x="510" y="360" font-size="10" fill="#412402" font-family="var(--font-sans)">created_by</text><text x="600" y="360" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+  <line x1="500" y1="365" x2="670" y2="365" stroke="#EF9F27" stroke-width="0.3"/>
+  <text x="510" y="376" font-size="10" fill="#412402" font-family="var(--font-sans)">updated_by</text><text x="600" y="376" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+
+  <!-- APLICACION x=350 y=470 w=190 h=170 -->
+  <rect x="350" y="470" width="190" height="170" rx="6" fill="#FAECE7" stroke="#993C1D" stroke-width="1.5"/>
+  <rect x="350" y="470" width="190" height="26" rx="6" fill="#993C1D"/>
+  <rect x="350" y="488" width="190" height="8" fill="#993C1D"/>
+  <text x="445" y="487" text-anchor="middle" font-size="12" font-weight="600" fill="#fff" font-family="var(--font-sans)">Aplicacion</text>
+  <line x1="350" y1="496" x2="540" y2="496" stroke="#F0997B" stroke-width="0.5"/>
+  <text x="360" y="510" font-size="10" fill="#4A1B0C" font-family="var(--font-sans)" font-weight="600">id</text><text x="450" y="510" font-size="10" fill="#993C1D" font-family="var(--font-sans)">UUID PK</text>
+  <line x1="350" y1="515" x2="540" y2="515" stroke="#F0997B" stroke-width="0.3"/>
+  <text x="360" y="528" font-size="10" fill="#4A1B0C" font-family="var(--font-sans)">candidato_id</text><text x="450" y="528" font-size="10" fill="#993556" font-family="var(--font-sans)">FK → Candidato</text>
+  <line x1="350" y1="533" x2="540" y2="533" stroke="#F0997B" stroke-width="0.3"/>
+  <text x="360" y="546" font-size="10" fill="#4A1B0C" font-family="var(--font-sans)">vacante_id</text><text x="450" y="546" font-size="10" fill="#993556" font-family="var(--font-sans)">FK → Vacante</text>
+  <line x1="350" y1="551" x2="540" y2="551" stroke="#F0997B" stroke-width="0.3"/>
+  <text x="360" y="564" font-size="10" fill="#4A1B0C" font-family="var(--font-sans)">etapa_id</text><text x="450" y="564" font-size="10" fill="#993556" font-family="var(--font-sans)">FK → Etapa</text>
+  <line x1="350" y1="569" x2="540" y2="569" stroke="#F0997B" stroke-width="0.3"/>
+  <text x="360" y="582" font-size="10" fill="#4A1B0C" font-family="var(--font-sans)">score_ia</text><text x="450" y="582" font-size="10" fill="#993C1D" font-family="var(--font-sans)">DECIMAL</text>
+  <line x1="350" y1="587" x2="540" y2="587" stroke="#F0997B" stroke-width="0.3"/>
+  <text x="360" y="600" font-size="10" fill="#4A1B0C" font-family="var(--font-sans)">estado</text><text x="450" y="600" font-size="10" fill="#993C1D" font-family="var(--font-sans)">ENUM</text>
+  <line x1="350" y1="605" x2="540" y2="605" stroke="#F0997B" stroke-width="0.3"/>
+  <text x="360" y="618" font-size="10" fill="#4A1B0C" font-family="var(--font-sans)">created_by</text><text x="450" y="618" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+  <line x1="350" y1="623" x2="540" y2="623" stroke="#F0997B" stroke-width="0.3"/>
+  <text x="360" y="634" font-size="10" fill="#4A1B0C" font-family="var(--font-sans)">updated_by</text><text x="450" y="634" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+
+  <!-- ENTREVISTA x=200 y=690 w=175 h=152 -->
+  <rect x="200" y="700" width="175" height="152" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+  <rect x="200" y="700" width="175" height="26" rx="6" fill="#0F6E56"/>
+  <rect x="200" y="718" width="175" height="8" fill="#0F6E56"/>
+  <text x="287" y="717" text-anchor="middle" font-size="12" font-weight="600" fill="#fff" font-family="var(--font-sans)">Entrevista</text>
+  <line x1="200" y1="726" x2="375" y2="726" stroke="#5DCAA5" stroke-width="0.5"/>
+  <text x="210" y="740" font-size="10" fill="#04342C" font-family="var(--font-sans)" font-weight="600">id</text><text x="300" y="740" font-size="10" fill="#0F6E56" font-family="var(--font-sans)">UUID PK</text>
+  <line x1="200" y1="745" x2="375" y2="745" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="210" y="758" font-size="10" fill="#04342C" font-family="var(--font-sans)">aplicacion_id</text><text x="300" y="758" font-size="10" fill="#993556" font-family="var(--font-sans)">FK → Aplic.</text>
+  <line x1="200" y1="763" x2="375" y2="763" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="210" y="776" font-size="10" fill="#04342C" font-family="var(--font-sans)">entrevistador_id</text><text x="300" y="776" font-size="10" fill="#993556" font-family="var(--font-sans)">FK → Usuario</text>
+  <line x1="200" y1="781" x2="375" y2="781" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="210" y="794" font-size="10" fill="#04342C" font-family="var(--font-sans)">modalidad</text><text x="300" y="794" font-size="10" fill="#0F6E56" font-family="var(--font-sans)">ENUM</text>
+  <line x1="200" y1="799" x2="375" y2="799" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="210" y="812" font-size="10" fill="#04342C" font-family="var(--font-sans)">estado</text><text x="300" y="812" font-size="10" fill="#0F6E56" font-family="var(--font-sans)">ENUM</text>
+  <line x1="200" y1="817" x2="375" y2="817" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="210" y="830" font-size="10" fill="#04342C" font-family="var(--font-sans)">created_by</text><text x="300" y="830" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+  <line x1="200" y1="835" x2="375" y2="835" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="210" y="846" font-size="10" fill="#04342C" font-family="var(--font-sans)">updated_by</text><text x="300" y="846" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+
+  <!-- EVALUACION x=30 y=700 w=150 h=152 -->
+  <rect x="30" y="700" width="155" height="152" rx="6" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+  <rect x="30" y="700" width="155" height="26" rx="6" fill="#534AB7"/>
+  <rect x="30" y="718" width="155" height="8" fill="#534AB7"/>
+  <text x="107" y="717" text-anchor="middle" font-size="12" font-weight="600" fill="#fff" font-family="var(--font-sans)">Evaluacion</text>
+  <line x1="30" y1="726" x2="185" y2="726" stroke="#AFA9EC" stroke-width="0.5"/>
+  <text x="40" y="740" font-size="10" fill="#26215C" font-family="var(--font-sans)" font-weight="600">id</text><text x="110" y="740" font-size="10" fill="#534AB7" font-family="var(--font-sans)">UUID PK</text>
+  <line x1="30" y1="745" x2="185" y2="745" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="40" y="758" font-size="10" fill="#26215C" font-family="var(--font-sans)">entrevista_id</text><text x="110" y="758" font-size="10" fill="#993556" font-family="var(--font-sans)">FK → Entr.</text>
+  <line x1="30" y1="763" x2="185" y2="763" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="40" y="776" font-size="10" fill="#26215C" font-family="var(--font-sans)">evaluador_id</text><text x="110" y="776" font-size="10" fill="#993556" font-family="var(--font-sans)">FK → Usuario</text>
+  <line x1="30" y1="781" x2="185" y2="781" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="40" y="794" font-size="10" fill="#26215C" font-family="var(--font-sans)">puntaje</text><text x="110" y="794" font-size="10" fill="#534AB7" font-family="var(--font-sans)">DECIMAL</text>
+  <line x1="30" y1="799" x2="185" y2="799" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="40" y="812" font-size="10" fill="#26215C" font-family="var(--font-sans)">recomendacion</text><text x="110" y="812" font-size="10" fill="#534AB7" font-family="var(--font-sans)">ENUM</text>
+  <line x1="30" y1="817" x2="185" y2="817" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="40" y="830" font-size="10" fill="#26215C" font-family="var(--font-sans)">created_by</text><text x="110" y="830" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+  <line x1="30" y1="835" x2="185" y2="835" stroke="#AFA9EC" stroke-width="0.3"/>
+  <text x="40" y="846" font-size="10" fill="#26215C" font-family="var(--font-sans)">updated_by</text><text x="110" y="846" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+
+  <!-- OFERTA x=600 y=700 w=175 h=152 -->
+  <rect x="600" y="700" width="175" height="152" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+  <rect x="600" y="700" width="175" height="26" rx="6" fill="#0F6E56"/>
+  <rect x="600" y="718" width="175" height="8" fill="#0F6E56"/>
+  <text x="687" y="717" text-anchor="middle" font-size="12" font-weight="600" fill="#fff" font-family="var(--font-sans)">Oferta</text>
+  <line x1="600" y1="726" x2="775" y2="726" stroke="#5DCAA5" stroke-width="0.5"/>
+  <text x="610" y="740" font-size="10" fill="#04342C" font-family="var(--font-sans)" font-weight="600">id</text><text x="700" y="740" font-size="10" fill="#0F6E56" font-family="var(--font-sans)">UUID PK</text>
+  <line x1="600" y1="745" x2="775" y2="745" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="610" y="758" font-size="10" fill="#04342C" font-family="var(--font-sans)">aplicacion_id</text><text x="700" y="758" font-size="10" fill="#993556" font-family="var(--font-sans)">FK → Aplic.</text>
+  <line x1="600" y1="763" x2="775" y2="763" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="610" y="776" font-size="10" fill="#04342C" font-family="var(--font-sans)">salario_ofertado</text><text x="700" y="776" font-size="10" fill="#0F6E56" font-family="var(--font-sans)">DECIMAL</text>
+  <line x1="600" y1="781" x2="775" y2="781" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="610" y="794" font-size="10" fill="#04342C" font-family="var(--font-sans)">fecha_inicio</text><text x="700" y="794" font-size="10" fill="#0F6E56" font-family="var(--font-sans)">DATE</text>
+  <line x1="600" y1="799" x2="775" y2="799" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="610" y="812" font-size="10" fill="#04342C" font-family="var(--font-sans)">estado</text><text x="700" y="812" font-size="10" fill="#0F6E56" font-family="var(--font-sans)">ENUM</text>
+  <line x1="600" y1="817" x2="775" y2="817" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="610" y="830" font-size="10" fill="#04342C" font-family="var(--font-sans)">created_by</text><text x="700" y="830" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+  <line x1="600" y1="835" x2="775" y2="835" stroke="#5DCAA5" stroke-width="0.3"/>
+  <text x="610" y="846" font-size="10" fill="#04342C" font-family="var(--font-sans)">updated_by</text><text x="700" y="846" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+
+  <!-- NOTIFICACION x=840 y=700 w=185 h=152 -->
+  <rect x="840" y="700" width="185" height="152" rx="6" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+  <rect x="840" y="700" width="185" height="26" rx="6" fill="#5F5E5A"/>
+  <rect x="840" y="718" width="185" height="8" fill="#5F5E5A"/>
+  <text x="932" y="717" text-anchor="middle" font-size="12" font-weight="600" fill="#fff" font-family="var(--font-sans)">Notificacion</text>
+  <line x1="840" y1="726" x2="1025" y2="726" stroke="#B4B2A9" stroke-width="0.5"/>
+  <text x="850" y="740" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)" font-weight="600">id</text><text x="940" y="740" font-size="10" fill="#5F5E5A" font-family="var(--font-sans)">UUID PK</text>
+  <line x1="840" y1="745" x2="1025" y2="745" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="850" y="758" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">destinatario_id</text><text x="940" y="758" font-size="10" fill="#993556" font-family="var(--font-sans)">FK polimórfica</text>
+  <line x1="840" y1="763" x2="1025" y2="763" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="850" y="776" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">tipo_destinatario</text><text x="940" y="776" font-size="10" fill="#5F5E5A" font-family="var(--font-sans)">ENUM</text>
+  <line x1="840" y1="781" x2="1025" y2="781" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="850" y="794" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">tipo</text><text x="940" y="794" font-size="10" fill="#5F5E5A" font-family="var(--font-sans)">ENUM</text>
+  <line x1="840" y1="799" x2="1025" y2="799" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="850" y="812" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">estado</text><text x="940" y="812" font-size="10" fill="#5F5E5A" font-family="var(--font-sans)">ENUM</text>
+  <line x1="840" y1="817" x2="1025" y2="817" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="850" y="830" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">created_by</text><text x="940" y="830" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+  <line x1="840" y1="835" x2="1025" y2="835" stroke="#B4B2A9" stroke-width="0.3"/>
+  <text x="850" y="846" font-size="10" fill="#2C2C2A" font-family="var(--font-sans)">updated_by</text><text x="940" y="846" font-size="10" fill="#993556" font-family="var(--font-sans)">FK</text>
+
+  <!-- ═══════════════════════════════════
+       LÍNEAS DE RELACIÓN (crow's foot)
+  ═══════════════════════════════════ -->
+
+  <!-- Rol — Rol_Permiso (1 a N): Rol.right → Rol_Permiso.left -->
+  <path d="M430 87 L700 87" fill="none" stroke="#534AB7" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#many)"/>
+  <text x="560" y="82" font-size="9" fill="#534AB7" font-family="var(--font-sans)" text-anchor="middle">1 : N</text>
+
+  <!-- Permiso — Rol_Permiso (1 a N): Permiso.right → Rol_Permiso.left -->
+  <path d="M650 68 L700 68" fill="none" stroke="#534AB7" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#many)"/>
+  <text x="675" y="63" font-size="9" fill="#534AB7" font-family="var(--font-sans)" text-anchor="middle">1 : N</text>
+
+  <!-- Usuario — Usuario_Rol (1 a N): Usuario.right → Usuario_Rol.left -->
+  <path d="M210 96 L240 96 L240 78 L900 78" fill="none" stroke="#534AB7" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#many)"/>
+  <text x="560" y="73" font-size="9" fill="#534AB7" font-family="var(--font-sans)" text-anchor="middle">1 : N</text>
+
+  <!-- Rol — Usuario_Rol (1 a N): Rol.right → Usuario_Rol.left -->
+  <path d="M430 105 L870 105 L870 96 L900 96" fill="none" stroke="#534AB7" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#many)"/>
+  <text x="660" y="100" font-size="9" fill="#534AB7" font-family="var(--font-sans)" text-anchor="middle">1 : N</text>
+
+  <!-- Usuario — Empresa (1 a N): Usuario.bottom → Empresa.top -->
+  <path d="M120 172 L120 230" fill="none" stroke="#185FA5" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#many)"/>
+  <text x="100" y="205" font-size="9" fill="#185FA5" font-family="var(--font-sans)">1 : N</text>
+
+  <!-- Usuario — Candidato (1 a 0..1): Usuario.right → Candidato.top -->
+  <path d="M210 130 L840 130 L840 230 L870 230" fill="none" stroke="#185FA5" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#one)"/>
+  <text x="540" y="125" font-size="9" fill="#185FA5" font-family="var(--font-sans)" text-anchor="middle">1 : 0..1</text>
+
+  <!-- Empresa — Vacante (1 a N): Empresa.right → Vacante.left -->
+  <path d="M210 306 L270 306" fill="none" stroke="#0F6E56" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#many)"/>
+  <text x="240" y="300" font-size="9" fill="#0F6E56" font-family="var(--font-sans)" text-anchor="middle">1 : N</text>
+
+  <!-- Vacante — Canal_Publicacion (1 a N): Vacante.left → Canal.top -->
+  <path d="M270 370 L120 370 L120 450" fill="none" stroke="#5F5E5A" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#many)"/>
+  <text x="175" y="415" font-size="9" fill="#5F5E5A" font-family="var(--font-sans)" text-anchor="middle">1 : N</text>
+
+  <!-- Vacante — Etapa (1 a N): Vacante.right → Etapa.left -->
+  <path d="M450 306 L500 306" fill="none" stroke="#854F0B" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#many)"/>
+  <text x="475" y="300" font-size="9" fill="#854F0B" font-family="var(--font-sans)" text-anchor="middle">1 : N</text>
+
+  <!-- Vacante — Aplicacion (1 a N): Vacante.bottom → Aplicacion.top -->
+  <path d="M360 400 L360 450 L445 450 L445 470" fill="none" stroke="#993C1D" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#many)"/>
+  <text x="400" y="445" font-size="9" fill="#993C1D" font-family="var(--font-sans)" text-anchor="middle">1 : N</text>
+
+  <!-- Candidato — Aplicacion (1 a N): Candidato.left → Aplicacion.right -->
+  <path d="M870 306 L690 306 L690 470 L540 540" fill="none" stroke="#993C1D" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#many)"/>
+  <text x="720" y="390" font-size="9" fill="#993C1D" font-family="var(--font-sans)">1 : N</text>
+
+  <!-- Etapa — Aplicacion (1 a N): Etapa.bottom → Aplicacion.right -->
+  <path d="M585 382 L585 455 L540 530" fill="none" stroke="#854F0B" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#many)"/>
+  <text x="608" y="430" font-size="9" fill="#854F0B" font-family="var(--font-sans)">1 : N</text>
+
+  <!-- Aplicacion — Entrevista (1 a N): Aplicacion.left → Entrevista.right -->
+  <path d="M350 600 L287 600 L287 700" fill="none" stroke="#0F6E56" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#many)"/>
+  <text x="265" y="655" font-size="9" fill="#0F6E56" font-family="var(--font-sans)">1 : N</text>
+
+  <!-- Aplicacion — Oferta (1 a 0..1): Aplicacion.right → Oferta.top -->
+  <path d="M540 600 L687 600 L687 700" fill="none" stroke="#0F6E56" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#one)"/>
+  <text x="630" y="655" font-size="9" fill="#0F6E56" font-family="var(--font-sans)">1 : 0..1</text>
+
+  <!-- Entrevista — Evaluacion (1 a N): Entrevista.left → Evaluacion.right -->
+  <path d="M200 776 L185 776" fill="none" stroke="#534AB7" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#many)"/>
+  <text x="192" y="770" font-size="9" fill="#534AB7" font-family="var(--font-sans)" text-anchor="middle">1:N</text>
+
+  <!-- Usuario — Notificacion (1 a N): dashed -->
+  <path d="M210 165 L932 165 L932 700" fill="none" stroke="#888780" stroke-width="1" stroke-dasharray="5 3" marker-start="url(#one-start)" marker-end="url(#many)"/>
+  <text x="580" y="160" font-size="9" fill="#888780" font-family="var(--font-sans)" text-anchor="middle">1 : N</text>
+
+  <!-- Candidato — Notificacion (1 a N): dashed -->
+  <path d="M962 382 L1060 382 L1060 776 L1025 776" fill="none" stroke="#888780" stroke-width="1" stroke-dasharray="5 3" marker-start="url(#one-start)" marker-end="url(#many)"/>
+  <text x="1060" y="580" font-size="9" fill="#888780" font-family="var(--font-sans)">1 : N</text>
+
+  <!-- Leyenda -->
+  <rect x="30" y="978" width="1040" height="28" rx="6" fill="none" stroke="var(--color-border-tertiary)" stroke-width="0.5"/>
+  <line x1="50" y1="992" x2="90" y2="992" stroke="#534AB7" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#one)"/>
+  <text x="96" y="996" font-size="10" fill="#534AB7" font-family="var(--font-sans)">1:1</text>
+  <line x1="140" y1="992" x2="180" y2="992" stroke="#0F6E56" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#many)"/>
+  <text x="186" y="996" font-size="10" fill="#0F6E56" font-family="var(--font-sans)">1:N</text>
+  <line x1="230" y1="992" x2="270" y2="992" stroke="#888780" stroke-width="1" stroke-dasharray="4 2" marker-start="url(#one-start)" marker-end="url(#many)"/>
+  <text x="276" y="996" font-size="10" fill="#888780" font-family="var(--font-sans)">1:N polimórfica</text>
+  <line x1="390" y1="992" x2="430" y2="992" stroke="#0F6E56" stroke-width="1" marker-start="url(#one-start)" marker-end="url(#one)"/>
+  <text x="436" y="996" font-size="10" fill="#0F6E56" font-family="var(--font-sans)">1:0..1 (opcional)</text>
+  <rect x="590" y="986" width="10" height="10" rx="2" fill="#534AB7"/>
+  <text x="606" y="996" font-size="10" fill="#534AB7" font-family="var(--font-sans)">Seguridad</text>
+  <rect x="670" y="986" width="10" height="10" rx="2" fill="#185FA5"/>
+  <text x="686" y="996" font-size="10" fill="#185FA5" font-family="var(--font-sans)">Actores</text>
+  <rect x="740" y="986" width="10" height="10" rx="2" fill="#0F6E56"/>
+  <text x="756" y="996" font-size="10" fill="#0F6E56" font-family="var(--font-sans)">Core</text>
+  <rect x="790" y="986" width="10" height="10" rx="2" fill="#993C1D"/>
+  <text x="806" y="996" font-size="10" fill="#993C1D" font-family="var(--font-sans)">Aplicacion</text>
+  <rect x="870" y="986" width="10" height="10" rx="2" fill="#854F0B"/>
+  <text x="886" y="996" font-size="10" fill="#854F0B" font-family="var(--font-sans)">Pipeline</text>
+  <rect x="940" y="986" width="10" height="10" rx="2" fill="#5F5E5A"/>
+  <text x="956" y="996" font-size="10" fill="#5F5E5A" font-family="var(--font-sans)">Soporte</text>
+</svg>
+</div>
